@@ -1,0 +1,6 @@
+[package]
+name = "lifetime-gats"
+version = "0.1.0"
+authors = ["Mark Rousskov <mark.simulacrum@gmail.com>"]
+
+[dependencies]
