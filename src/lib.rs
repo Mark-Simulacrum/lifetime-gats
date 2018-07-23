@@ -119,7 +119,7 @@ impl<T: LifetimeCast<'a> + Copy> ops::DerefMut for ReferenceMut<'a, T> {
     }
 }
 
-unsafe impl<T: 'static> LifetimeCast<'b> for &'a T {
+unsafe impl<T: 'a + 'b> LifetimeCast<'b> for &'a T {
     type Target = &'b T;
     unsafe fn cast(self) -> &'b T {
         mem::transmute(self)
@@ -132,7 +132,7 @@ unsafe impl<T: 'static> LifetimeCast<'b> for &'a T {
     }
 }
 
-unsafe impl<T: 'static> LifetimeCast<'b> for &'a mut T {
+unsafe impl<T: 'a + 'b> LifetimeCast<'b> for &'a mut T {
     type Target = &'b mut T;
     unsafe fn cast(self) -> Self::Target {
         mem::transmute(self)
