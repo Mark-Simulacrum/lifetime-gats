@@ -98,9 +98,7 @@ impl<T: LifetimeCast<'a> + Copy> ops::Deref for Reference<'a, T> {
     type Target = T::Target;
     fn deref(&self) -> &Self::Target {
         // casting to 'a (the actual lifetime) is always safe
-        unsafe {
-            self.0.cast_reference()
-        }
+        unsafe { self.0.cast_reference() }
     }
 }
 
@@ -108,9 +106,7 @@ impl<T: LifetimeCast<'a> + Copy> ops::Deref for ReferenceMut<'a, T> {
     type Target = T::Target;
     fn deref(&self) -> &Self::Target {
         // casting to 'a (the actual lifetime) is always safe
-        unsafe {
-            self.0.cast_reference()
-        }
+        unsafe { self.0.cast_reference() }
     }
 }
 
@@ -119,9 +115,7 @@ impl<T: LifetimeCast<'a> + Copy> ops::DerefMut for ReferenceMut<'a, T> {
         // This overrides the fact that `self` is invariant here (behind &mut).
         // However, because conceptually we're returning the same type we were
         // originally passed this is still a sound operation.
-        unsafe {
-            self.0.cast_reference_mut()
-        }
+        unsafe { self.0.cast_reference_mut() }
     }
 }
 
