@@ -1,4 +1,4 @@
-# Lifetime-based emulation of Generic Associated Types
+### Lifetime-based emulation of Generic Associated Types
 
 **This implementation has not been verified as correct. It may not be sound.**
 
