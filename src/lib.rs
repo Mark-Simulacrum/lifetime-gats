@@ -94,7 +94,7 @@ impl<'a, T> ReferenceMut<'a, T> {
     }
 }
 
-impl<T: LifetimeCast<'a> + Copy> ops::Deref for Reference<'a, T> {
+impl<T: LifetimeCast<'a>> ops::Deref for Reference<'a, T> {
     type Target = T::Target;
     fn deref(&self) -> &Self::Target {
         // casting to 'a (the actual lifetime) is always safe
@@ -102,7 +102,7 @@ impl<T: LifetimeCast<'a> + Copy> ops::Deref for Reference<'a, T> {
     }
 }
 
-impl<T: LifetimeCast<'a> + Copy> ops::Deref for ReferenceMut<'a, T> {
+impl<T: LifetimeCast<'a>> ops::Deref for ReferenceMut<'a, T> {
     type Target = T::Target;
     fn deref(&self) -> &Self::Target {
         // casting to 'a (the actual lifetime) is always safe
@@ -110,7 +110,7 @@ impl<T: LifetimeCast<'a> + Copy> ops::Deref for ReferenceMut<'a, T> {
     }
 }
 
-impl<T: LifetimeCast<'a> + Copy> ops::DerefMut for ReferenceMut<'a, T> {
+impl<T: LifetimeCast<'a>> ops::DerefMut for ReferenceMut<'a, T> {
     fn deref_mut(&mut self) -> &mut Self::Target {
         // This overrides the fact that `self` is invariant here (behind &mut).
         // However, because conceptually we're returning the same type we were
